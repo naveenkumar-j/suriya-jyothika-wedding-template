@@ -120,7 +120,9 @@ Until a file exists, every image slot renders a hand-drawn gold-on-ivory SVG art
 
 The background music is the set of wedding recordings from the template, kept in `public/audio/`
 and listed in `wedding.audio.tracks`. `src/lib/audio.js` picks one of them at random per visit,
-loops it and plays it through a single `<audio>` element at `wedding.audio.volume`. It only ever
+loops it and plays it through a single `<audio>` element at `wedding.audio.volume`. Browsers that
+ignore the `loop` attribute for MP4-muxed audio fire `ended` instead of wrapping, so the player also
+listens for `ended` and rewinds itself — the track never falls silent mid-visit. It only ever
 starts from the "Open Invitation" click, so no autoplay policy is violated, and the on/off choice is
 remembered for the session.
 
