@@ -1,0 +1,30 @@
+@theme {
+  --color-ivory: #faf8f5;
+  --color-beige: #f5f1ed;
+  --color-champagne: #f4e4b8;
+  --color-gold: #d4af37;
+  --color-gold-deep: #b8941f;
+  --color-brown: #6d5b4e;
+  --color-charcoal: #3a2e24;
+  --color-ink: #2a1b1b;
+  --color-maroon: #8b2f39;
+  --color-maroon-deep: #6b1f29;
+
+  --font-heading: "Cinzel", "Cormorant Garamond Variable", Georgia, serif;
+  --font-script: "Tangerine", "Cormorant Garamond Variable", cursive;
+  --font-display: "Cormorant Garamond Variable", "Playfair Display", Georgia, serif;
+  --font-ui: "Inter Variable", "Montserrat", system-ui, -apple-system, sans-serif;
+
+  --ease-cinema: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  --text-hero: clamp(2rem, 5vw, 5rem);
+  --text-name: clamp(3rem, 11vw, 6.5rem);
+  --text-couple: clamp(2.5rem, 7vw, 6rem);
+  --text-eyebrow: clamp(0.65rem, 1vw, 0.9rem);
+  --text-section: clamp(1.8rem, 4vw, 2.5rem);
+  --text-body: clamp(1rem, 1.3vw, 1.2rem);
+
+  --tracking-name: 0.14em;
+  --tracking-heading: 0.1em;
+  --tracking-eyebrow: 0.3em;
+}

@@ -3,7 +3,7 @@
 A cinematic, single-page wedding invitation built with React, Vite, Tailwind CSS v4 and Framer Motion (`motion`).
 
 The layout, palette and decorative artwork follow **your own `surendar wedding / floral-right` template**
-(`ganesha.png`, the floral corners, the vector ornaments were copied into `public/images/`), rebuilt here in
+(`ganesha.png` and the floral corners were copied into `public/images/`), rebuilt here in
 React with this invitation's own copy and data. Nothing is taken from a third-party invitation site.
 
 ## Commands
@@ -104,14 +104,13 @@ Put files in `public/images/` using the names already referenced in `weddingData
 public/images/ganesha.png      ← mark on the gate and the card
 public/images/floral-left.png  ← top corners of the card
 public/images/floral-right.png
-public/images/vector-1.png     ← corner ornaments (unused so far)
-public/images/vector-2.png
 public/images/groom.jpg        ← Groom & Bride portrait
 public/images/bride.jpeg
 public/images/marriage.jpg / reception.jpg  ← event photographs
 public/images/gallery-1.jpg … gallery-5.jpg             ← Happy Moments carousel
-public/images/hero-poster.jpg  ← opening poster artwork (not present; art plate renders instead)
 ```
+
+Those twelve files are the whole set `weddingData.js` asks for — nothing else belongs in `public/images/`.
 
 Keep each entry's `w`/`h` values close to the real pixel dimensions — they reserve the aspect ratio before the file loads, which is what prevents layout shift. The carousel is the exception: `Gallery.jsx` crops every slide into one shared 3:4 portrait frame (`FRAME`), so the strip never changes height mid-swipe, and the entries in `wedding.gallery` only need `src` and `alt`.
 

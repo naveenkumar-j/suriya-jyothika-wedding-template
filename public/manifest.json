@@ -1,0 +1,15 @@
+{
+  "short_name": "Suriya & Jyothika",
+  "name": "Suriya weds Jyothika — Wedding Invitation",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "400x400",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#FBF7EF",
+  "theme_color": "#FBF7EF"
+}

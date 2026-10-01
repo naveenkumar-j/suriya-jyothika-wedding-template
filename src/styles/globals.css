@@ -1,0 +1,261 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    overflow-x: clip;
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-ivory);
+    color: var(--color-charcoal);
+    font-family: var(--font-display);
+    font-size: var(--text-body);
+    line-height: 1.7;
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    color: var(--color-maroon);
+    margin: 0;
+    line-height: 1.12;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+  }
+
+  button {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: 0;
+    cursor: pointer;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  input,
+  select,
+  textarea {
+    font: inherit;
+    color: var(--color-charcoal);
+  }
+}
+
+@layer components {
+  .eyebrow {
+    font-family: var(--font-ui);
+    font-size: var(--text-eyebrow);
+    font-weight: 500;
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--color-gold-deep);
+  }
+
+  /* Cinzel, uppercase, wide-tracked — the template's section heading voice. */
+  .section-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-section);
+    font-weight: 400;
+    letter-spacing: var(--tracking-heading);
+    text-transform: uppercase;
+    color: var(--color-maroon);
+  }
+
+  .hairline {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: var(--color-champagne);
+  }
+
+  /* Lifts body copy off the busy middle of the art plate without a box:
+     an ivory glow behind the glyphs instead of a panel around them. */
+  .veil-text {
+    text-shadow:
+      0 1px 2px rgba(250, 248, 245, 0.95),
+      0 2px 14px rgba(250, 248, 245, 0.85);
+  }
+
+  .section-pad {
+    padding-block: clamp(4.5rem, 12vh, 9rem);
+    padding-inline: 1.5rem;
+  }
+
+  /* Filled gold pill: the template's only call to action shape. */
+  .pill-gold {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    min-height: 44px;
+    border-radius: 999px;
+    border: 1px solid var(--color-gold);
+    background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-deep) 100%);
+    color: var(--color-ivory);
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 0.7rem 1.9rem;
+    box-shadow: 0 10px 26px -12px rgba(212, 175, 55, 0.75);
+    transition:
+      transform 0.4s var(--ease-cinema),
+      box-shadow 0.4s var(--ease-cinema),
+      background 0.4s var(--ease-cinema),
+      border-color 0.4s var(--ease-cinema);
+  }
+
+  .pill-gold:hover {
+    background: linear-gradient(135deg, var(--color-gold-deep) 0%, var(--color-maroon) 100%);
+    border-color: var(--color-maroon);
+    transform: translateY(-3px);
+    box-shadow: 0 16px 34px -12px rgba(139, 47, 57, 0.5);
+  }
+
+  .link-quiet {
+    font-family: var(--font-ui);
+    font-size: var(--text-eyebrow);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-charcoal);
+    border-bottom: 1px solid var(--color-champagne);
+    padding-bottom: 0.55rem;
+    transition:
+      color 0.4s var(--ease-cinema),
+      border-color 0.4s var(--ease-cinema);
+  }
+
+  .link-quiet:hover {
+    color: var(--color-gold-deep);
+    border-color: var(--color-gold);
+  }
+
+  /* Rose petals drifting down the opening and the pinned card. */
+  .petal-layer {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .petal {
+    position: absolute;
+    top: -12%;
+    border-radius: 50% 0 50% 0;
+    background: radial-gradient(circle at 30% 30%, #f7e3b3 0%, #d9b45c 100%);
+    animation-name: petal-fall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes petal-fall {
+    0% {
+      transform: translate3d(0, 0, 0) rotate(0deg);
+      opacity: 0;
+    }
+    12% {
+      opacity: 1;
+    }
+    100% {
+      transform: translate3d(var(--petal-drift, 6vw), 118vh, 0) rotate(540deg);
+      opacity: 0;
+    }
+  }
+
+  /* Hearts over the couple: the same fall, but they wobble side to side and
+     only tilt a few degrees, because a spinning heart reads as a mistake. */
+  .heart {
+    position: absolute;
+    top: -12%;
+    overflow: visible;
+    animation-name: heart-fall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes heart-fall {
+    0% {
+      transform: translate3d(0, 0, 0) rotate(-7deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    35% {
+      transform: translate3d(calc(var(--petal-drift, 6vw) * 0.4), 40vh, 0) rotate(7deg);
+    }
+    65% {
+      transform: translate3d(calc(var(--petal-drift, 6vw) * -0.3), 76vh, 0) rotate(-6deg);
+    }
+    100% {
+      transform: translate3d(var(--petal-drift, 6vw), 118vh, 0) rotate(6deg);
+      opacity: 0;
+    }
+  }
+}
+
+@layer utilities {
+  .svh {
+    height: 100vh;
+  }
+
+  @supports (height: 100svh) {
+    .svh {
+      height: 100svh;
+    }
+  }
+
+  /* The intro film is 9:16. Portrait viewports fill it edge to edge; wider
+     viewports hold it up as a doorway panel with a soft cast shadow.
+     Text sits inside it and sizes off its width, not the viewport's. */
+  .film-stage {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    container-type: inline-size;
+  }
+
+  @media (min-aspect-ratio: 4/5) {
+    .film-stage {
+      width: auto;
+      height: 100%;
+      max-width: 100%;
+      aspect-ratio: 9 / 16;
+      box-shadow: 0 34px 90px -34px rgba(58, 46, 36, 0.5);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
